@@ -1,0 +1,154 @@
+{
+  "projects": [
+    {
+      "id": "project-1",
+      "title": "Marketing Attribution & Multi-Channel ROI Optimization",
+      "category": "Marketing Analytics",
+      "problem": "A B2B SaaS company investing $3M+ annually across 5+ channels lacked clear attribution, making budget allocation guesswork. Marketing wanted to prove ROI, while sales questioned lead quality. The goal was to build a data-driven attribution model to quantify true ROI and optimize spend.",
+      "tools": ["SQL", "Python (scikit-learn)", "Tableau", "Google Analytics", "Salesforce"],
+      "insights": [
+        "Data-driven attribution revealed Paid Search was over-credited by 80% under last-click models, while Organic/Content was undervalued.",
+        "Organic has highest true ROI (8.0 = $8 revenue per $1 spent), Email 4.0, SMS 3.2, Paid 2.1, Display 1.2.",
+        "SMS had the fastest payback (2.3 months) and highest LTV but received only 10% of budget.",
+        "Recommended shifting $400K from Paid to Organic/Email, projected to generate $360K incremental revenue (+3%)."
+      ],
+      "charts": [
+        {
+          "title": "Attribution Model Comparison: Revenue (USD)",
+          "type": "bar",
+          "data": [
+            { "channel": "Paid Search", "LastClick": 1200000, "DataDriven": 650000 },
+            { "channel": "Organic/Content", "LastClick": 400000, "DataDriven": 950000 },
+            { "channel": "Email", "LastClick": 350000, "DataDriven": 550000 },
+            { "channel": "SMS", "LastClick": 150000, "DataDriven": 280000 },
+            { "channel": "Direct", "LastClick": 900000, "DataDriven": 570000 }
+          ],
+          "config": {
+            "xKey": "channel",
+            "bars": [
+              { "key": "LastClick", "color": "#001f3f", "name": "Last-Click (Baseline)" },
+              { "key": "DataDriven", "color": "#39CCCC", "name": "Data-Driven (ML)" }
+            ]
+          }
+        },
+        {
+          "title": "Channel ROI Heatmap (Return on Ad Spend)",
+          "type": "bar",
+          "data": [
+            { "channel": "Organic", "roi": 8.0 },
+            { "channel": "Email", "roi": 4.0 },
+            { "channel": "SMS", "roi": 3.2 },
+            { "channel": "Paid Search", "roi": 2.1 },
+            { "channel": "Display", "roi": 1.2 }
+          ],
+          "config": {
+            "xKey": "channel",
+            "bars": [
+              { "key": "roi", "color": "#001f3f", "name": "ROI ($ Rev / $ Spend)" }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "project-2",
+      "title": "GTM Pipeline Diagnostics & Conversion Optimization",
+      "category": "GTM & Revenue Strategy",
+      "problem": "A B2B SaaS company generated significant MQLs but faced declining conversion rates (28% → 16%). The goal was to diagnose pipeline leaks, identify highest-ROI segments, and recommend GTM strategy adjustments.",
+      "tools": ["SQL", "BigQuery", "Python", "Tableau", "Salesforce"],
+      "insights": [
+        "Root cause: Pipeline composition shifted from high-converting sources (Partner, Enterprise) to low-converting (broad paid, SMB).",
+        "Identified 'Tech mid-market' segment as a hidden gem: 35% win rate, $85K ACV, but only 20% of MQL spend.",
+        "Partner referrals showed 40% win rate and 60% lower CAC → recommended doubling co-marketing budget.",
+        "Recommended stricter BANT criteria as 30% of early-stage opportunities lacked budget or authority."
+      ],
+      "charts": [
+        {
+          "title": "Pipeline Funnel Conversion (Volume)",
+          "type": "bar",
+          "layout": "vertical",
+          "data": [
+            { "stage": "MQL", "volume": 1000, "conversion": 100 },
+            { "stage": "SQL", "volume": 220, "conversion": 22 },
+            { "stage": "Opportunity", "volume": 140, "conversion": 64 },
+            { "stage": "Proposal", "volume": 85, "conversion": 60 },
+            { "stage": "Closed-Won", "volume": 35, "conversion": 41 }
+          ],
+          "config": {
+            "xKey": "stage",
+            "bars": [
+              { "key": "volume", "color": "#001f3f", "name": "Volume" }
+            ]
+          }
+        },
+        {
+          "title": "Win Rate (%) by Channel vs. CAC (USD)",
+          "type": "scatter",
+          "data": [
+            { "channel": "Partner", "winRate": 40, "cac": 1200, "size": 85 },
+            { "channel": "Enterprise Outbound", "winRate": 32, "cac": 4500, "size": 120 },
+            { "channel": "Content/Organic", "winRate": 25, "cac": 800, "size": 60 },
+            { "channel": "Email", "winRate": 25, "cac": 2100, "size": 250 },
+            { "channel": "Paid Search", "winRate": 8, "cac": 3200, "size": 300 }
+          ],
+          "config": {
+            "xKey": "cac",
+            "yKey": "winRate",
+            "zKey": "size",
+            "nameKey": "channel"
+          }
+        }
+      ]
+    },
+    {
+      "id": "project-3",
+      "title": "Multi-Store Inventory Optimization",
+      "category": "Supply Chain & Operations",
+      "problem": "A mid-to-large beauty retailer with multi-location stores and e-commerce faced severe inventory imbalance: bestsellers stocked out in high-traffic locations while excess inventory (40–60+ days-on-hand) piled up in low-volume stores. Portfolio turnover was 4.2× vs. industry benchmark of 5.5×+. The goal was to optimize allocation, reduce stockouts and excess, and improve capital efficiency.",
+      "tools": ["SQL", "Python (ABC Analysis)", "Tableau", "Excel/VBA"],
+      "insights": [
+        "Root cause was fixed allocation strategy; implemented store-specific, seasonally-adjusted logic.",
+        "Identified 42 inter-store transfer opportunities with 4.2x ROI, moving 3,200 units to high-demand locations.",
+        "Clearance strategy for bottom 25% SKUs reduced excess inventory by 65% in 6 weeks.",
+        "Results: Turnover improved 4.2x → 5.5x (+31%), stockouts reduced by 62%, annual net benefit $725K."
+      ],
+      "charts": [
+        {
+          "title": "Turnover Improvement Trend (Inventory Turns)",
+          "type": "line",
+          "data": [
+            { "month": "M1", "turnover": 4.2 },
+            { "month": "M3", "turnover": 4.4 },
+            { "month": "M6", "turnover": 4.8 },
+            { "month": "M9", "turnover": 5.1 },
+            { "month": "M12", "turnover": 5.5 },
+            { "month": "M15", "turnover": 5.4 },
+            { "month": "M18", "turnover": 5.6 }
+          ],
+          "config": {
+            "xKey": "month",
+            "lines": [
+              { "key": "turnover", "color": "#39CCCC", "name": "Inventory Turnover & (Times per Year)" }
+            ]
+          }
+        },
+        {
+          "title": "Stockout Reduction (Incidents/Month)",
+          "type": "bar",
+          "data": [
+            { "type": "Flagship", "before": 1.2, "after": 0.8 },
+            { "type": "Mall", "before": 4.8, "after": 1.6 },
+            { "type": "Regional", "before": 6.2, "after": 2.1 }
+          ],
+          "config": {
+            "xKey": "type",
+            "bars": [
+              { "key": "before", "color": "#001f3f", "name": "Before (Incidents/Mo)" },
+              { "key": "after", "color": "#39CCCC", "name": "After (Incidents/Mo)" }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
